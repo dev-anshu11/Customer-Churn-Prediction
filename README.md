@@ -23,9 +23,12 @@ Telco Customer Churn (IBM sample dataset): 7,043 customers, 21 columns. Included
 
 I held out 20% of the data (1,409 of 7,043 customers) as a test set, stratified by churn, so the metrics come from customers the models didn't train on.
 
-An always-"no churn" baseline would score about 73.5% accuracy but find none of the churners. Accuracy is only 0.761 for the Random Forest, so I judge the models on recall and ROC-AUC.
 
-**Which model I'd give a team:** Logistic Regression. Its recall is slightly higher (0.786 against 0.778), its ROC-AUC is within 0.002 of the Random Forest's, and it's easier to explain. The cost is a lower precision (0.506), so just over half of the customers it flags won't actually leave. I chose it assuming a missed churner costs more than a wasted retention call. I haven't tested that assumption.
+**Which model I'd give a team:** Logistic Regression. It finds slightly more of the customers who leave (recall 0.786 against 0.778), and its ROC-AUC is within 0.002 of the Random Forest's. The cost is a lower precision (0.506), so just over half of the customers it flags won't actually leave. I chose it assuming a missed churner costs more than a wasted retention call. I haven't tested that assumption.
+
+**How I chose:** I compared both models on the same test set and then picked Logistic Regression, so its test scores may be slightly optimistic. The gap between the models is only 0.002 ROC-AUC, so the effect is small.
+
+An always-"no churn" baseline would score about 73.5% accuracy but find none of the churners. Accuracy is only 0.761 for the Random Forest, so I judge the models on recall and ROC-AUC.
 
 ## Key insights
 - Overall churn rate is 26.5%.
