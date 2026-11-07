@@ -1,6 +1,6 @@
 # Customer Churn Prediction
 
-Machine learning project that predicts which telecom customers are likely to leave, and finds the main factors behind churn.
+Machine learning project that predicts which telecom customers are likely to leave, and shows which customer traits go with higher churn.
 
 ## Problem
 Losing customers is expensive. Predicting churn early lets a retention team contact at-risk customers with offers or support.
@@ -21,6 +21,12 @@ Telco Customer Churn (IBM sample dataset): 7,043 customers, 21 columns. Included
 | Logistic Regression | 0.740 | 0.506 | 0.786 | 0.616 | 0.842 |
 | Random Forest | 0.761 | 0.534 | 0.778 | 0.633 | 0.844 |
 
+I held out 20% of the data (1,409 of 7,043 customers) as a test set, stratified by churn, so the metrics come from customers the models didn't train on.
+
+An always-"no churn" baseline would score about 73.5% accuracy but find none of the churners. Accuracy is only 0.761 for the Random Forest, so I judge the models on recall and ROC-AUC.
+
+**Which model I'd give a team:** Logistic Regression. Its recall is slightly higher (0.786 against 0.778), its ROC-AUC is within 0.002 of the Random Forest's, and it's easier to explain. The cost is a lower precision (0.506), so just over half of the customers it flags won't actually leave. I chose it assuming a missed churner costs more than a wasted retention call. I haven't tested that assumption.
+
 ## Key insights
 - Overall churn rate is 26.5%.
 - Month-to-month contracts churn at 42.7%, against 2.8% for two-year contracts.
@@ -36,3 +42,4 @@ jupyter notebook Customer_Churn_Prediction.ipynb
 
 ## Tech stack
 Python, Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn
+
