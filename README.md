@@ -39,7 +39,7 @@ An always-"no churn" baseline would score about 73.5% accuracy but find none of 
 ## How to run
 ```
 pip install -r requirements.txt
-jupyter notebook Customer_Churn_Prediction.ipynb
+jupyter notebook
 ```
 
 ## Tech stack
